@@ -110,6 +110,14 @@ public class Station {
         return passenger;
     }
 
+    /**
+     * Setter for lobby of a station
+     *
+     * @param lobby lobby of a station
+     */
+    public void setLobby(Lobby lobby) {
+        this.lobby = lobby;
+    }
 
     /**
      * Getter for lobby

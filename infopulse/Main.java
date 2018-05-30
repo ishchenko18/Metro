@@ -28,7 +28,7 @@ public class Main {
                 metro.getLinesInSubway(i).buildAllPossibleTrain();
             }
 
-            /*Station akademmistechko = new Station(1, "Akademmistechko", true);
+            Station akademmistechko = new Station(1, "Akademmistechko", true);
             akademmistechko.setLobby(new Lobby("Akademmistechko Lobby"));
             metro.getLinesInSubway(0).buildStation(akademmistechko);
 
@@ -117,14 +117,14 @@ public class Main {
 
             lobbyKPI.start();
             firstEscalatorKPI.start();
-            secondEscalatorKPI.start();*/
+            secondEscalatorKPI.start();
 
             System.out.println(metro.getLinesInSubway(0).getTrains().size());
 
             Train train = metro.getLinesInSubway(0).getTrain(0);
 
-/*            Thread threadTrain = new Thread(new RunTrain(train, metro, 0));
-            threadTrain.start();*/
+            Thread threadTrain = new Thread(new RunTrain(train, metro, 0));
+            threadTrain.start();
 
         } catch (SQLException e) {
             e.printStackTrace();
