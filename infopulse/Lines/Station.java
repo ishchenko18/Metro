@@ -2,16 +2,19 @@ package infopulse.Lines;
 
 import infopulse.people.Passenger;
 
+import java.io.IOException;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Semaphore;
+import java.util.logging.*;
 
 /**
  * Class, which describe a station
  *
  * @author Ishchenko Vladyslav
  * @since 1.0
- * @version 1.0
+ * @version 1.1
  */
 public class Station {
     /**
@@ -50,18 +53,47 @@ public class Station {
     private Semaphore semaphore;
 
     /**
+     * Logger for adding information about transfer of passengers
+     */
+    private static final Logger logger = Logger.getLogger(Station.class.getName());
+
+    //Start settings for logger
+    static {
+        logger.setUseParentHandlers(false);
+
+        try {
+            FileHandler fileHandler = new FileHandler();
+
+            //Anonymous class Formatter for formatting text of log
+            Formatter formatter = new Formatter() {
+                @Override
+                public String format(LogRecord record) {
+                    return record.getMillis() + "  " + record.getSequenceNumber() + "  " + record.getLevel() + "  " + record.getMessage() + "\n";
+                }
+            };
+
+            fileHandler.setFormatter(formatter);
+
+            logger.addHandler(fileHandler);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Constructor of initializing
      *
      * @param id ID of the Station
      * @param name Name of the Station
      * @param last Is last station on a Line
+     * @since 1.1
      */
     public Station(int id, String name, boolean last) {
         this.id = id;
         this.name = name;
-        this.passengers = new ArrayBlockingQueue<Passenger>(400);
+        this.passengers = new ArrayBlockingQueue<>(400);
         this.last = last;
-        escalators = new Escalator[]{new Escalator(), new Escalator()};
+        this.escalators = new Escalator[]{new Escalator(), new Escalator()};
         this.semaphore = new Semaphore(1);
     }
 
@@ -89,7 +121,8 @@ public class Station {
      * @param passenger passenger, who came to the station
      */
     public void passengerCame(Passenger passenger) {
-        System.out.println("Passenger " + passenger + " came to the station: " + name);
+        logger.log(Level.INFO, passenger + " came to the station: " + name);
+
         passengers.offer(passenger);
     }
 
@@ -100,12 +133,14 @@ public class Station {
      */
     public Passenger passengerLeaveStation() {
         Passenger passenger = null;
+
         try {
             passenger = passengers.take();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Passenger " + passenger + " leave station: " + name);
+
+        logger.log(Level.INFO, passenger + " leave station: " + name);
 
         return passenger;
     }
@@ -133,7 +168,7 @@ public class Station {
      *
      * @param i number of escalator
      * @return escalator
-     * @throws Exception
+     * @throws Exception exception throws, when the escalator for such index doesn't exist
      */
     public Escalator getEscalators(int i) throws Exception{
         if(i >= 0 && i <= escalators.length) {

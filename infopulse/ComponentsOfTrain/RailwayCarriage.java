@@ -6,6 +6,7 @@ import infopulse.people.Passenger;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Logger;
 
 /**
  * This class describe a subway carriage
@@ -18,7 +19,7 @@ public class RailwayCarriage implements Cloneable {
     /**
      * count of carriages in subway
      */
-    public static int countCarriages = 0;
+    private static int countCarriages = 0;
 
     /**
      * ID of a carriage
@@ -71,11 +72,12 @@ public class RailwayCarriage implements Cloneable {
      * method is cloning a carriage
      *
      * @return new carriage
-     * @throws CloneNotSupportedException
+     * @throws CloneNotSupportedException when clone not supported for object
      */
     @Override
     public RailwayCarriage clone() throws CloneNotSupportedException {
         RailwayCarriage carriage = (RailwayCarriage) super.clone();
+
         carriage.setId(++countCarriages);
 
         return carriage;
@@ -88,13 +90,6 @@ public class RailwayCarriage implements Cloneable {
      */
     public boolean isMainCarriage() {
         return mainCarriage;
-    }
-
-    /**
-     * @param mainCarriage
-     */
-    public void setMainCarriage(boolean mainCarriage) {
-        this.mainCarriage = mainCarriage;
     }
 
     /**
@@ -127,7 +122,7 @@ public class RailwayCarriage implements Cloneable {
     /**
      * Method for checking count of people into carriage
      *
-     * @return
+     * @return count of passengers into railway carriage
      */
     public int countOfPassengers() {
         return passengers.size();
