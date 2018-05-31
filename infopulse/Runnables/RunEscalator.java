@@ -23,11 +23,6 @@ public class RunEscalator implements Runnable {
     private int numberEscalator;
 
     /**
-     * Lobby for the escalator
-     */
-    private Lobby lobby;
-
-    /**
      * Time of thread sleeping
      */
     private int timeSleeping;
@@ -36,13 +31,11 @@ public class RunEscalator implements Runnable {
      * Constructor of initialization
      *
      * @param station         Station, when escalator work
-     * @param lobby           Lobby for the escalator
      * @param numberEscalator Number of escalator
      * @param timeSleeping    Time of thread sleeping
      */
-    public RunEscalator(Station station, Lobby lobby, int numberEscalator, int timeSleeping) {
+    public RunEscalator(Station station, int numberEscalator, int timeSleeping) {
         this.station = station;
-        this.lobby = lobby;
         this.numberEscalator = numberEscalator;
         this.timeSleeping = timeSleeping;
     }
@@ -54,7 +47,7 @@ public class RunEscalator implements Runnable {
     public void run() {
         try {
             while (true) {
-                Passenger passenger = lobby.passengerLeave();
+                Passenger passenger = station.getLobby().passengerLeave();
 
                 if (passenger != null) {
                     station.getEscalators(numberEscalator).passengerWantRide(passenger);

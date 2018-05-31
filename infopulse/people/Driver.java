@@ -1,5 +1,8 @@
 package infopulse.people;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Class describe driver
  *
@@ -7,37 +10,55 @@ package infopulse.people;
  * @author 1.0
  * @since 1.0
  */
-public class Driver {
+@DatabaseTable(tableName = "driver")
+public class Driver implements Comparable<Driver>{
     /**
      * id of the driver
      */
+    @DatabaseField(id = true)
     private int driverId;
 
     /**
      * FirstName of the driver
      */
+    @DatabaseField
     private String firstName;
 
     /**
      * Surname of the driver
      */
+    @DatabaseField
     private String surname;
 
     /**
      * Experience of the driver
      */
+    @DatabaseField
     private Experience experienceOfDriver;
+
+    /**
+     * ID of line, where he work
+     */
+    @DatabaseField
+    private int lineId;
+
+
+    Driver() {
+
+    }
 
     /**
      * Constructor of initializing
      *
-     * @param driverId           id of the driver
+     * @param driverId           ID of the driver
      * @param firstName          FirstName of the driver
      * @param surname            Surname of the driver
+     * @param lineId             ID of the line
      * @param experienceOfDriver Experience of the driver
      */
-    public Driver(int driverId, String firstName, String surname, Experience experienceOfDriver) {
+    public Driver(int driverId, int lineId, String firstName, String surname, Experience experienceOfDriver) {
         this.driverId = driverId;
+        this.lineId = lineId;
         this.firstName = firstName;
         this.surname = surname;
         this.experienceOfDriver = experienceOfDriver;
@@ -95,5 +116,10 @@ public class Driver {
                 ", surname='" + surname + '\'' +
                 ", experienceOfDriver=" + experienceOfDriver +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Driver driver) {
+        return this.getExperienceOfDriver() - driver.getExperienceOfDriver();
     }
 }

@@ -2,6 +2,8 @@ package infopulse.Lines;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import infopulse.Runnables.RunEscalator;
+import infopulse.Runnables.RunLobby;
 import infopulse.people.Passenger;
 
 import java.io.IOException;
@@ -68,6 +70,21 @@ public class Station {
      */
     private static final Logger logger = Logger.getLogger(Station.class.getName());
 
+    /**
+     * Thread, which manage a lobby of this station
+     */
+    private Thread lobbyThread;
+
+    /**
+     * Thread, which manage a first escalator on this station
+     */
+    private Thread firstEscalatorThread;
+
+    /**
+     * Thread, which manage a second escalator on this station
+     */
+    private Thread secondEscalatorThread;
+
     //Start settings for logger
     static {
         logger.setUseParentHandlers(false);
@@ -100,6 +117,10 @@ public class Station {
         this.passengers = new ArrayBlockingQueue<>(400);
         this.escalators = new Escalator[]{new Escalator(), new Escalator()};
         this.semaphore = new Semaphore(1);
+
+        this.lobbyThread = new Thread(new RunLobby(this, 2000), this.name + " Lobby");
+        this.firstEscalatorThread = new Thread(new RunEscalator(this, 0, 3000), "First Escalator " + this.name);
+        this.secondEscalatorThread = new Thread(new RunEscalator(this, 1, 3000), "Second Escalator " + this.name);
     }
 
     /**
@@ -118,6 +139,10 @@ public class Station {
         this.last = last;
         this.escalators = new Escalator[]{new Escalator(), new Escalator()};
         this.semaphore = new Semaphore(1);
+
+        this.lobbyThread = new Thread(new RunLobby(this, 2000), this.name + " Lobby");
+        this.firstEscalatorThread = new Thread(new RunEscalator(this, 0, 3000), "First Escalator " + this.name);
+        this.secondEscalatorThread = new Thread(new RunEscalator(this, 1, 3000), "Second Escalator " + this.name);
     }
 
     /**
@@ -187,9 +212,9 @@ public class Station {
     }
 
     /**
+     * Getter for name of station
      *
-     *
-     * @return
+     * @return name of station
      */
     public String getName() {
         return name;
@@ -226,6 +251,33 @@ public class Station {
      */
     public boolean isLast() {
         return last;
+    }
+
+    /**
+     * Getter for thread of lobby
+     *
+     * @return thread of lobby
+     */
+    public Thread getLobbyThread() {
+        return lobbyThread;
+    }
+
+    /**
+     * Getter for thread of first escalator
+     *
+     * @return thread of first escalator
+     */
+    public Thread getFirstEscalatorThread() {
+        return firstEscalatorThread;
+    }
+
+    /**
+     * Getter for thread of second escalator
+     *
+     * @return thread of second escalator
+     */
+    public Thread getSecondEscalatorThread() {
+        return secondEscalatorThread;
     }
 
     /**

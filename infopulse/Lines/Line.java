@@ -96,6 +96,15 @@ public class Line {
     }
 
     /**
+     * Method for adding list of drivers
+     *
+     * @param drivers list of drivers
+     */
+    public void setDrivers(PriorityBlockingQueue<Driver> drivers) {
+        this.drivers = drivers;
+    }
+
+    /**
      * Method for adding new driver
      *
      * @param driver driver on the station

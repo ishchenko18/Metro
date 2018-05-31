@@ -11,11 +11,11 @@ import infopulse.Lines.Line;
 import infopulse.Lines.Lobby;
 import infopulse.Lines.Station;
 import infopulse.MainComponents.Metro;
+import infopulse.people.Driver;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.stream.Collectors;
 
 /**
@@ -67,14 +67,19 @@ public class DataBase {
     private Dao<RailwayCarriage, Integer> daoRailwayCarriage;
 
     /**
-     *
+     * DAO for receiving stations from DB
      */
     private Dao<Station, Integer> daoStation;
 
     /**
-     *
+     * DAO for receiving lobbies from DB
      */
     private Dao<Lobby, String> daoLobby;
+
+    /**
+     * DAO for receiving drivers from DB
+     */
+    private Dao<Driver, Integer> daoDriver;
 
     /**
      * Constructor of initializing
@@ -100,6 +105,7 @@ public class DataBase {
             daoRailwayCarriage = DaoManager.createDao(source, RailwayCarriage.class);
             daoStation = DaoManager.createDao(source, Station.class);
             daoLobby = DaoManager.createDao(source, Lobby.class);
+            daoDriver = DaoManager.createDao(source, Driver.class);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -114,6 +120,7 @@ public class DataBase {
         QueryBuilder<Line, Integer> queryBuilderLine = daoLine.queryBuilder();
         QueryBuilder<RailwayCarriage, Integer> queryBuilderRailwayCarriage = daoRailwayCarriage.queryBuilder();
         QueryBuilder<Station, Integer> queryBuilderStation = daoStation.queryBuilder();
+        QueryBuilder<Driver, Integer> queryBuilderDriver = daoDriver.queryBuilder();
 
         //Get lines from DB
         metro.setLinesInSubway(new ArrayList<>(queryBuilderLine.query()));
@@ -139,6 +146,8 @@ public class DataBase {
                     e.printStackTrace();
                 }
             });
+
+            line.setDrivers(new PriorityBlockingQueue<>(queryBuilderDriver.query()));
         }
     }
 }
