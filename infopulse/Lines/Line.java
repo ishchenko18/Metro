@@ -15,7 +15,7 @@ import java.util.concurrent.PriorityBlockingQueue;
  * Class, which describe a line of subway
  *
  * @author Ishchenko Vladyslav
- * @version 1.0
+ * @version 1.1
  * @since 1.0
  */
 @DatabaseTable(tableName = "line")
@@ -140,6 +140,16 @@ public class Line {
      */
     public LinkedList<Station> getStations() {
         return stations;
+    }
+
+    /**
+     * Setter for list of stations
+     *
+     * @param stations list of stations
+     * @since 1.1
+     */
+    public void setStations(LinkedList<Station> stations) {
+        this.stations = stations;
     }
 
     /**

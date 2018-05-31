@@ -1,5 +1,7 @@
 package infopulse.Lines;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import infopulse.people.Passenger;
 
 import java.io.IOException;
@@ -16,20 +18,29 @@ import java.util.logging.*;
  * @since 1.0
  * @version 1.1
  */
+@DatabaseTable(tableName = "station")
 public class Station {
     /**
      * ID of the Station
      */
+    @DatabaseField(id = true)
     private int id;
 
     /**
+     * ID of line, where station locate
+     */
+    @DatabaseField
+    private int lineId;
+    /**
      * Name of the Station
      */
+    @DatabaseField
     private String name;
 
     /**
      * Is last station on a Line
      */
+    @DatabaseField
     private boolean last;
 
     /**
@@ -81,6 +92,17 @@ public class Station {
     }
 
     /**
+     * Default Constructor
+     *
+     * @since 1.1
+     */
+    Station() {
+        this.passengers = new ArrayBlockingQueue<>(400);
+        this.escalators = new Escalator[]{new Escalator(), new Escalator()};
+        this.semaphore = new Semaphore(1);
+    }
+
+    /**
      * Constructor of initializing
      *
      * @param id ID of the Station
@@ -88,8 +110,9 @@ public class Station {
      * @param last Is last station on a Line
      * @since 1.1
      */
-    public Station(int id, String name, boolean last) {
+    public Station(int id, int lineId, String name, boolean last) {
         this.id = id;
+        this.lineId = lineId;
         this.name = name;
         this.passengers = new ArrayBlockingQueue<>(400);
         this.last = last;
@@ -161,6 +184,15 @@ public class Station {
      */
     public Lobby getLobby() {
         return lobby;
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    public String getName() {
+        return name;
     }
 
     /**

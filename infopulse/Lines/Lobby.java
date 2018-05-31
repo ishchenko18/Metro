@@ -1,5 +1,7 @@
 package infopulse.Lines;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import infopulse.people.Passenger;
 
 import java.util.LinkedList;
@@ -8,19 +10,28 @@ import java.util.LinkedList;
  * Class, which describe a Lobby of station
  *
  * @author Ishchenko Vladyslav
- * @version 1.0
+ * @version 1.1
  * @since 1.0
  */
+@DatabaseTable(tableName = "lobby")
 public class Lobby {
     /**
      * Name of the lobby
      */
+    @DatabaseField(id = true)
     private String name;
 
     /**
      * List of passengers into Lobby
      */
     private LinkedList<Passenger> passengers;
+
+    /**
+     * Default constructor
+     */
+    public Lobby() {
+        passengers = new LinkedList<>();
+    }
 
     /**
      * Constructor of initializing

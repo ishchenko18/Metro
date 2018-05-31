@@ -2,7 +2,7 @@ package infopulse;
 
 import infopulse.ComponentsOfTrain.Train;
 import infopulse.DataBase.DataBase;
-import infopulse.Exceptions.NegativeValueException;
+
 import infopulse.Lines.Lobby;
 import infopulse.Lines.Station;
 import infopulse.MainComponents.Metro;
@@ -28,7 +28,7 @@ public class Main {
                 metro.getLinesInSubway(i).buildAllPossibleTrain();
             }
 
-            Station akademmistechko = new Station(1, "Akademmistechko", true);
+            Station akademmistechko = new Station(1,0, "Akademmistechko", true);
             akademmistechko.setLobby(new Lobby("Akademmistechko Lobby"));
             metro.getLinesInSubway(0).buildStation(akademmistechko);
 
@@ -36,7 +36,7 @@ public class Main {
             Thread firstEscalatorAkademmistechko = new Thread(new RunEscalator(akademmistechko, akademmistechko.getLobby(), 0, 3000), "First Escalator Akademmistechko");
             Thread secondEscalatorAkademmistechko = new Thread(new RunEscalator(akademmistechko, akademmistechko.getLobby(), 1, 3000), "Second Escalator Akademmistechko");
 
-            Station zhytomyrska = new Station(2, "Zhytomyrska", false);
+            Station zhytomyrska = new Station(2, 0, "Zhytomyrska", false);
             zhytomyrska.setLobby(new Lobby("Zhytomyrska Lobby"));
             metro.getLinesInSubway(0).buildStation(zhytomyrska);
 
@@ -44,7 +44,7 @@ public class Main {
             Thread firstEscalatorZhytomyrska = new Thread(new RunEscalator(zhytomyrska, zhytomyrska.getLobby(),0, 3000), "First Escalator Zhytomyrska");
             Thread secondEscalatorZhytomyrska = new Thread(new RunEscalator(zhytomyrska, zhytomyrska.getLobby(),1, 3000), "Second Escalator Zhytomyrska");
 
-            Station sviatoshyn = new Station(3, "Sviatoshyn", false);
+            Station sviatoshyn = new Station(3, 0, "Sviatoshyn", false);
             sviatoshyn.setLobby(new Lobby("Sviatoshyn Lobby"));
             metro.getLinesInSubway(0).buildStation(sviatoshyn);
 
@@ -52,7 +52,7 @@ public class Main {
             Thread firstEscalatorSviatoshyn = new Thread(new RunEscalator(sviatoshyn, sviatoshyn.getLobby(),0, 3000), "First Escalator Sviatoshyn");
             Thread secondEscalatorSviatoshyn = new Thread(new RunEscalator(sviatoshyn, sviatoshyn.getLobby(),1, 3000), "Second Escalator Sviatoshyn");
 
-            Station nyvky = new Station(4, "Nyvky", false);
+            Station nyvky = new Station(4, 0, "Nyvky", false);
             nyvky.setLobby(new Lobby("Nyvky Lobby"));
             metro.getLinesInSubway(0).buildStation(nyvky);
 
@@ -60,7 +60,7 @@ public class Main {
             Thread firstEscalatorNyvky = new Thread(new RunEscalator(nyvky, nyvky.getLobby(),0, 3000), "First Escalator Nyvky");
             Thread secondEscalatorNyvky = new Thread(new RunEscalator(nyvky, nyvky.getLobby(),1, 3000), "Second Escalator Nyvky");
 
-            Station beresteiska = new Station(5, "Beresteiska", false);
+            Station beresteiska = new Station(5, 0, "Beresteiska", false);
             beresteiska.setLobby(new Lobby("Beresteiska Lobby"));
             metro.getLinesInSubway(0).buildStation(beresteiska);
 
@@ -68,7 +68,7 @@ public class Main {
             Thread firstEscalatorBeresteiska = new Thread(new RunEscalator(beresteiska, beresteiska.getLobby(),0, 3000), "First Escalator Beresteiska");
             Thread secondEscalatorBeresteiska = new Thread(new RunEscalator(beresteiska, beresteiska.getLobby(),1, 3000), "Second Escalator Beresteiska");
 
-            Station shuliavska = new Station(6, "Shuliavska", false);
+            Station shuliavska = new Station(6, 0, "Shuliavska", false);
             shuliavska.setLobby(new Lobby("Shuliavska Lobby"));
             metro.getLinesInSubway(0).buildStation(shuliavska);
 
@@ -76,7 +76,7 @@ public class Main {
             Thread firstEscalatorShuliavska = new Thread(new RunEscalator(shuliavska, shuliavska.getLobby(),0, 3000), "First Escalator Shuliavska");
             Thread secondEscalatorShuliavska = new Thread(new RunEscalator(shuliavska, shuliavska.getLobby(),1, 3000), "Second Escalator Shuliavska");
 
-            Station kpi = new Station(7, "KPI", true);
+            Station kpi = new Station(7, 0, "KPI", true);
             kpi.setLobby(new Lobby("KPI Lobby"));
             metro.getLinesInSubway(0).buildStation(kpi);
 
@@ -118,8 +118,6 @@ public class Main {
             lobbyKPI.start();
             firstEscalatorKPI.start();
             secondEscalatorKPI.start();
-
-            System.out.println(metro.getLinesInSubway(0).getTrains().size());
 
             Train train = metro.getLinesInSubway(0).getTrain(0);
 
