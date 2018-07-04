@@ -1,9 +1,9 @@
 package infopulse.servlets;
 
-import infopulse.Exceptions.NegativeValueException;
-import infopulse.FactoryOfBuilding.Factory;
-import infopulse.Lines.Line;
-import infopulse.MainComponents.Metro;
+import infopulse.exceptions.NegativeValueException;
+import infopulse.factoryOfBuilding.Factory;
+import infopulse.lines.Line;
+import infopulse.mainComponents.Metro;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

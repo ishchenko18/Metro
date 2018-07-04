@@ -2,8 +2,8 @@ package infopulse.Lines;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import infopulse.Runnables.RunEscalator;
-import infopulse.Runnables.RunLobby;
+import infopulse.runnables.RunEscalator;
+import infopulse.runnables.RunLobby;
 import infopulse.people.Passenger;
 
 import java.io.IOException;

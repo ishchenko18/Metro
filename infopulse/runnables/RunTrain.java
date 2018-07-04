@@ -1,8 +1,8 @@
-package infopulse.Runnables;
+package infopulse.runnables;
 
-import infopulse.ComponentsOfTrain.Train;
-import infopulse.Lines.Station;
-import infopulse.MainComponents.Metro;
+import infopulse.partOfTrain.Train;
+import infopulse.lines.Station;
+import infopulse.mainComponents.Metro;
 
 /**
  * Class describe moving of Train

@@ -1,16 +1,16 @@
-package infopulse.DataBase;
+package infopulse.resources;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
-import infopulse.ComponentsOfTrain.RailwayCarriage;
-import infopulse.Depot;
-import infopulse.Lines.Line;
-import infopulse.Lines.Lobby;
-import infopulse.Lines.Station;
-import infopulse.MainComponents.Metro;
+import infopulse.partOfTrain.RailwayCarriage;
+import infopulse.depot;
+import infopulse.lines.Line;
+import infopulse.lines.Lobby;
+import infopulse.lines.Station;
+import infopulse.mainComponents.Metro;
 import infopulse.people.Driver;
 
 import java.sql.SQLException;

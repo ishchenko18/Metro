@@ -1,7 +1,7 @@
-package infopulse.Runnables;
+package infopulse.runnables;
 
-import infopulse.ComponentsOfTrain.RailwayCarriage;
-import infopulse.Lines.Station;
+import infopulse.partOfTrain.RailwayCarriage;
+import infopulse.lines.Station;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;

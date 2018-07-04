@@ -1,4 +1,4 @@
-package infopulse.Exceptions;
+package infopulse.exceptions;
 
 /**
  * Describe exception, when depot not exist

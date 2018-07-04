@@ -1,6 +1,6 @@
-package infopulse.MainComponents;
+package infopulse.mainComponents;
 
-import infopulse.Lines.Line;
+import infopulse.lines.Line;
 
 import java.util.ArrayList;
 

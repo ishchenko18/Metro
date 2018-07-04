@@ -1,6 +1,6 @@
-package infopulse.Runnables;
+package infopulse.runnables;
 
-import infopulse.Lines.Station;
+import infopulse.lines.Station;
 
 /**
  * Class describe work of Lobby

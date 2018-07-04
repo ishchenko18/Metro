@@ -1,11 +1,11 @@
-package infopulse.FactoryOfBuilding;
+package infopulse.factoryOfBuilding;
 
-import infopulse.ComponentsOfTrain.RailwayCarriage;
-import infopulse.ComponentsOfTrain.Train;
-import infopulse.Depot;
-import infopulse.Exceptions.DepotNotExistException;
-import infopulse.Exceptions.NegativeValueException;
-import infopulse.Exceptions.WrongCreatingTrainException;
+import infopulse.partOfTrain.RailwayCarriage;
+import infopulse.partOfTrain.Train;
+import infopulse.mainComponents.Depot;
+import infopulse.exceptions.DepotNotExistException;
+import infopulse.exceptions.NegativeValueException;
+import infopulse.exceptions.WrongCreatingTrainException;
 
 import java.util.Random;
 

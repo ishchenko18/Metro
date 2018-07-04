@@ -1,7 +1,7 @@
-package infopulse.Runnables;
+package infopulse.runnables;
 
-import infopulse.Lines.Lobby;
-import infopulse.Lines.Station;
+import infopulse.lines.Lobby;
+import infopulse.lines.Station;
 import infopulse.people.Passenger;
 
 /**

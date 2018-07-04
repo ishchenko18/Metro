@@ -1,4 +1,4 @@
-package infopulse.Lines;
+package infopulse.lines;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

@@ -1,4 +1,4 @@
-package infopulse.Lines;
+package infopulse.lines;
 
 import infopulse.people.Passenger;
 

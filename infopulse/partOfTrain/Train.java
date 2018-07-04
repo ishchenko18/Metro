@@ -1,9 +1,9 @@
-package infopulse.ComponentsOfTrain;
+package infopulse.partOfTrain;
 
 
-import infopulse.Depot;
-import infopulse.Lines.Station;
-import infopulse.Runnables.ExchangePassengers;
+import infopulse.depot;
+import infopulse.lines.Station;
+import infopulse.runnables.ExchangePassengers;
 import infopulse.people.Driver;
 
 import java.util.LinkedList;

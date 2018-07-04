@@ -1,4 +1,4 @@
-package infopulse.ComponentsOfTrain;
+package infopulse.partOfTrain;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

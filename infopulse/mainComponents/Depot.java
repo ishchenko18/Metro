@@ -1,10 +1,10 @@
-package infopulse;
+package infopulse.mainComponents;
 
 import java.util.ArrayList;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import infopulse.ComponentsOfTrain.RailwayCarriage;
+import infopulse.partOfTrain.RailwayCarriage;
 
 /**
  * Class describe a depot of a line

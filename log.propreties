@@ -1,3 +1,7 @@
 .level=INFO
 
 java.util.logging.FileHandler.limit=3MB
+java.util.logging.FileHandler.level=INFO
+java.util.logging.FileHandler.pattern=logMetro.txt
+
+

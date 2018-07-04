@@ -1,11 +1,11 @@
-package infopulse.Lines;
+package infopulse.lines;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import infopulse.ComponentsOfTrain.Train;
-import infopulse.Depot;
-import infopulse.Exceptions.DepotNotExistException;
-import infopulse.FactoryOfBuilding.Factory;
+import infopulse.partOfTrain.Train;
+import infopulse.depot;
+import infopulse.exceptions.DepotNotExistException;
+import infopulse.factoryOfBuilding.Factory;
 import infopulse.people.Driver;
 
 import java.util.*;
